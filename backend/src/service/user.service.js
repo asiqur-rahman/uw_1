@@ -200,7 +200,8 @@ service.create = async (req) => {
                         .then(function(res){
                             resolve({
                                 status: 201,
-                                message: 'User was created, Id:' + user.id + '. With email invitaion.',
+                                id: user.id,
+                                message: 'User was created. With email invitaion.',
                                 invitation: res.message
                             });
                         })
@@ -234,7 +235,8 @@ service.create = async (req) => {
                             });
                             resolve({
                                 status: 201,
-                                message: 'User was created, Id:' + user.id + '. With whatapp invitaion.'
+                                id: user.id,
+                                message: 'User was created. With whatapp invitaion.'
                             });
                         } catch (error) {
                             console.log(error);
