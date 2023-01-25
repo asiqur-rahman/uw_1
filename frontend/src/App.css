@@ -1,0 +1,192 @@
+/*a {
+  text-decoration: none !important;
+  color:#673AB7 !important;
+}*/
+/* rgb(249 196 70)*/
+.container-scroller{
+  background: #f2edf3;
+}
+.logo{
+  object-fit: scale-down;
+}
+.sidebar .nav .nav-item .active{
+  color: #b66dff !important;
+}
+.sidebar .nav .nav-item .active i{
+  color: #b66dff !important;
+}
+.sidenav {
+  height: calc(100vh - 70px);
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top:70px;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 28px;
+ /* margin-right: 50px;*/
+}
+.justify-r{
+  margin-left: 0;
+  margin-right: auto;
+}
+.hide{
+  display: none;
+}
+.m-l{
+  margin-left: 10px;
+}
+ /* toggle in label designing */
+ .toggle {
+  position : relative ;
+  display : inline-block;
+  width : 40px;
+  height : 20px;
+  background-color: #9a55ff;
+  border-radius: 30px;
+  /*border: 2px solid gray;*/
+}
+     
+/* After slide changes */
+.toggle:after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  top: 1px;
+  left: 1px;
+  transition:  all 0.5s;
+}
+  
+/* Checkbox checked effect */
+.checkbox:checked + .toggle::after {
+  left : 20px;
+}
+     
+/* Checkbox checked toggle label bg color */
+.checkbox:checked + .toggle {
+  background-color: #d6c7ed;
+}
+     
+/* Checkbox vanished */
+.checkbox {
+  display : none;
+}
+.img-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+ }
+ 
+ .img-wrapper > div {
+  flex: 0 1 33%;
+  padding: 5px;
+ }
+ .img-wrapper > div >img{
+  height: 120px;
+  width: 100%;
+object-fit: cover;
+ }
+ .content-img{
+  position: relative;
+  
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+ }
+ .content-txt {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  left: 5px;
+  background-color:rgba(0, 0, 0, 0.7);
+padding: 5px;
+display: flex;
+  
+}
+.content-txt >  i {
+width: 30px;
+display: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.content-wrapper::-webkit-scrollbar, .table-responsive::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.content-wrapper , .table-responsive{
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
+.file-upload .file-upload-select , .picture-upload .picture-upload-select , .images-upload .images-upload-select{
+	cursor: pointer;
+	
+	overflow: hidden;
+	position: relative;
+
+  min-height: 3.175rem;
+  border-radius: 0.3rem;
+
+  border: 1px solid #ebedf2;
+    font-family: dinRegular;
+    font-size: 0.8125rem;
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    line-height: 1;
+    color: #212529;
+    background-color: color(white);
+    background-clip: padding-box;
+    appearance: none;
+}
+.file-upload .file-upload-select .file-select-button , .picture-upload .picture-upload-select .picture-select-button, .images-upload .images-upload-select .images-select-button {
+	background: #b66dff;
+	padding: 10px;
+	display: inline-block;
+  color: #ffffff;
+  border-radius: 0.3rem;
+margin: 5px;
+}
+.file-upload .file-upload-select .file-select-name ,.picture-upload .picture-upload-select .picture-select-name , .images-upload .images-upload-select .images-select-name {
+	display: inline-block;
+	padding: 10px;
+}
+.file-upload .file-upload-select:hover .file-select-button, .picture-upload .picture-upload-select:hover .picture-select-button ,.images-upload .images-upload-select:hover .images-select-button{
+	background: #6c1abe;
+	color: #ffffff;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-upload-select input[type="file"], .picture-upload .picture-upload-select input[type="file"] , .images-upload .images-upload-select input[type="file"] {
+	display: none;
+}
+
+h2, p{
+  font-size: 13px !important;
+}
