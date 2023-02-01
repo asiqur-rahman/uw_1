@@ -61,7 +61,19 @@ service.getByCategoryId = async (id) => {
             raw: true
         }).then(data => {
             if (data) {
-                resolve({status:200,data:data});
+                db.user.findAll({
+                    attributes: ["subCategoryId", sequelize.fn('count', sequelize.col('id'))],
+                    group: "subCategoryId",
+                    raw: true
+                }).then(result => {
+                    data.forEach(element => {
+                        var fiteredData=result.filter(x=>x.subCategoryId==element.id);
+                        element.number=fiteredData.length>0 ? fiteredData[0].count : 0;
+                    });
+                    resolve({status:200,data:data});
+                })
+                
+                
             } else {
                 resolve({
                     status: 404,
