@@ -6,6 +6,7 @@ const awaitHandlerFactory = require('../../middleware/awaitHandlerFactory.middle
 const { userCreateValidator,userSendMailValidator,userPasswordUpdateValidator } = require('../../middleware/validators/userValidator.middleware');
 
 router.get('/id/:id', awaitHandlerFactory(userController.getById));
+router.get('/get/:cid/:scid', awaitHandlerFactory(userController.getByCidScid));
 router.patch('/id/:id',userCreateValidator, awaitHandlerFactory(userController.update));
 router.delete('/id/:id', awaitHandlerFactory(userController.delete));
 router.get('/list', awaitHandlerFactory(userController.list));

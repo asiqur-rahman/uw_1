@@ -15,6 +15,15 @@ module.exports.getById = async(req, res, next) => {
     })
 };
 
+module.exports.getByCidScid = async(req, res, next) => {
+    await userService.getByCidScid(req)
+    .then(user=>{
+        return res.send(user);
+    }).catch(e=>{
+        return res.status(e.status).send(e);
+    })
+};
+
 module.exports.create = async(req, res, next) => {
     const OTP = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false });
     req.body.roleId=3;
