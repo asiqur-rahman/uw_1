@@ -72,8 +72,6 @@ service.getByCategoryId = async (id) => {
                     });
                     resolve({status:200,data:data});
                 })
-                
-                
             } else {
                 resolve({
                     status: 404,
