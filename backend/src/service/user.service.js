@@ -62,6 +62,45 @@ service.getById = async (id,req) => {
 };
 
 
+service.getByCidScid = async (req) => {
+    return new Promise(async (resolve, reject) => {
+        await db.user.findAll({
+            where: {
+                [Op.and]: [{
+                    categoryId: req.params.cid
+                },
+                {
+                    subCategoryId: req.params.scid
+                }]
+            },
+            include: [{
+                model: db.role,
+                as: "role"
+            }],
+            raw: true
+        }).then(async data => {
+            if (data) {
+                resolve({status:200,data:data});
+            } else {
+                resolve({
+                    status: 404,
+                    message: "User not found !"
+                })
+            }
+        }).catch(function (err) {
+            reject({
+                status: 303,
+                message: err.message
+            })
+        });
+    }).catch(function (err) {
+        log.debug('Error', {
+            error: err.message,
+        });
+        throw err;
+    });
+};
+
 service.getByName = async (value) => {
     return new Promise(async (resolve, reject) => {
         await db.user.findOne({
