@@ -221,29 +221,34 @@ service.create = async (req) => {
 
                     const link = req.protocol + '://' + req.get('host') + `/api/auth/verification/otp/${user.id}&${req.body.otp}`;
                     if(req.body.emailInvitation){
-                        await emailService.sendMail({
-                            To: [req.body.email],
-                            MailSubject: "Account Verification",
-                            MailBody: `
-                            <div style="padding:10px;border-style: ridge">
-                            <p>Please verify your account</p>
-                            <h3>Click on the link below to verify your account</h3>
-                            <a href="${link}">Click here to verify</a>
-                            <p>Or You can copy the link and paste to your browser: ${link} </p>
-                            <p>Your login username:  <b>${req.body.phone}</b>  </p>
-                            <p>Your login password:  <b>${password}</b>  </p>
-                            <br/>
-                            <p>Note: Please verify first before login.</p>
-                            `
-                        },req)
-                        .then(function(res){
-                            resolve({
-                                status: 201,
-                                id: user.id,
-                                message: 'User was created. With email invitaion.',
-                                invitation: res.message
-                            });
-                        })
+                        try{
+                            await emailService.sendMail({
+                                To: [req.body.email],
+                                MailSubject: "Account Verification",
+                                MailBody: `
+                                <div style="padding:10px;border-style: ridge">
+                                <p>Please verify your account</p>
+                                <h3>Click on the link below to verify your account</h3>
+                                <a href="${link}">Click here to verify</a>
+                                <p>Or You can copy the link and paste to your browser: ${link} </p>
+                                <p>Your login username:  <b>${req.body.phone}</b>  </p>
+                                <p>Your login password:  <b>${password}</b>  </p>
+                                <br/>
+                                <p>Note: Please verify first before login.</p>
+                                `
+                            },req)
+                            .then(function(res){
+                                resolve({
+                                    status: 201,
+                                    id: user.id,
+                                    message: 'User was created. With email invitaion.',
+                                    invitation: res.message
+                                });
+                            })
+                        }catch (error) {
+                            console.log("Email sending error !");
+                            console.log(error);
+                        }
                     }
                     
                     if(req.body.whatsappInvitation){
@@ -278,6 +283,7 @@ service.create = async (req) => {
                                 message: 'User was created. With whatapp invitaion.'
                             });
                         } catch (error) {
+                            console.log("Whatsapp message sending error !");
                             console.log(error);
                         }
                         
