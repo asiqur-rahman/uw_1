@@ -9,7 +9,7 @@ router.get('/id/:id',  awaitHandlerFactory(bankAccountController.getById));
 router.post('/', categoryValidator, awaitHandlerFactory(bankAccountController.create));
 router.patch('/id/:id',categoryValidator,  awaitHandlerFactory(bankAccountController.update));
 router.delete('/id/:id',  awaitHandlerFactory(bankAccountController.delete));
-router.get('/list', awaitHandlerFactory(bankAccountController.list));
+router.get(['/list/:name/:order','/list'], awaitHandlerFactory(bankAccountController.list));
 router.get('/dropdown', awaitHandlerFactory(bankAccountController.dropdown));
 
 
