@@ -42,7 +42,12 @@ service.getById = async (id) => {
 
 service.indexData = async (req) => {
     return new Promise(async (resolve, reject) => {
+        var order=[];
+        if(req.params.name && req.params.order){
+            order.push([req.params.name,req.params.order])
+        }
         await db.category.findAndCountAll({
+            order: order,
             raw: true
         }).then(detailsInfo => {
             if (detailsInfo.rows) {
